@@ -302,7 +302,8 @@ mvn test -Dtest=FileScannerTest
 ## 📜 License
 
 This project is licensed under the **MIT License** — free to use, modify, and distribute.
-
+---
+SWARAJ GONDCHAWAR
 ---
 
-> Built with ❤️ using **Java 17** | **Java NIO** | **Maven** | **JUnit 5**
+> Built with ❤️ using **Java 17** | **Java NIO** | **Maven** | **SRG**
