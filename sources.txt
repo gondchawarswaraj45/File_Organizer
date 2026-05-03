@@ -1,0 +1,14 @@
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\Main.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\cli\CLIHandler.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\core\FileCategorizer.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\core\FileMover.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\core\FileScanner.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\core\OrganizerEngine.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\core\UndoManager.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\model\FileCategory.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\model\FileOperation.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\model\OrganizeSummary.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\util\ConfigManager.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\util\LoggerUtility.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\util\ZipUtil.java
+C:\Users\Swaraj\Desktop\Work\File_organizer\src\main\java\com\fileorganizer\web\WebApp.java

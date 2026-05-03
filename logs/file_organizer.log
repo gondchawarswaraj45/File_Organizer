@@ -114,3 +114,53 @@
 [2026-04-24 00:39:56] [INFO ] ↩ Restored: ambient.wav ← C:\Users\Swaraj\Desktop\File_organizer\test_sandbox\Audio\ambient.wav → C:\Users\Swaraj\Desktop\File_organizer\test_sandbox\ambient.wav
 [2026-04-24 00:39:56] [INFO ] Undo complete. Restored: 21 | Failed: 0
 [2026-04-24 00:39:56] [INFO ] File Organizer Tool exited.
+
+=====================================================
+  File Organizer Tool — Session Started
+  Timestamp: 2026-05-04 01:47:31
+=====================================================
+[2026-05-04 01:47:31] [INFO ] File Organizer Tool started.
+[2026-05-04 01:47:31] [INFO ] Undo history loaded. 0 session(s) available.
+
+=====================================================
+  File Organizer Tool — Session Started
+  Timestamp: 2026-05-04 02:08:11
+=====================================================
+[2026-05-04 02:08:11] [INFO ] File Organizer Tool started.
+[2026-05-04 02:08:11] [INFO ] Undo history loaded. 0 session(s) available.
+     ------------------------------------------------------------
+[2026-05-04 02:10:09] [INFO ] Starting ORGANIZE on: C:\Users\Swaraj\AppData\Local\Temp\file-organizer-web-4273049451104747685\extracted
+     ------------------------------------------------------------
+[2026-05-04 02:10:09] [INFO ] Scanning directory: C:\Users\Swaraj\AppData\Local\Temp\file-organizer-web-4273049451104747685\extracted
+[2026-05-04 02:10:09] [INFO ] Mode: Shallow scan (top-level only).
+[2026-05-04 02:10:09] [INFO ] Total files found: 0
+[2026-05-04 02:10:09] [WARN ] No files found in directory: C:\Users\Swaraj\AppData\Local\Temp\file-organizer-web-4273049451104747685\extracted
+     ------------------------------------------------------------
+[2026-05-04 02:38:31] [INFO ] Starting ORGANIZE on: C:\Users\Swaraj\AppData\Local\Temp\file-organizer-web-9206033522005605270\extracted
+     ------------------------------------------------------------
+[2026-05-04 02:38:31] [INFO ] Scanning directory: C:\Users\Swaraj\AppData\Local\Temp\file-organizer-web-9206033522005605270\extracted
+[2026-05-04 02:38:31] [INFO ] Mode: Shallow scan (top-level only).
+[2026-05-04 02:38:31] [INFO ] Total files found: 14
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: .gitattributes ➜ Others/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: .gitignore ➜ Others/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: 1.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: 2.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: 3.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: CONTRIBUTING.md ➜ Documents/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: format.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: github_pull_request.sh ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: LICENSE ➜ Others/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: links.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: requirements.txt ➜ Documents/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: test_validate_format.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: test_validate_links.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] ✔ Moved: __init__.py ➜ Code/
+[2026-05-04 02:38:31] [INFO ] Undo session saved. 14 operations recorded.
+     ------------------------------------------------------------
+
+=====================================================
+  File Organizer Tool — Session Started
+  Timestamp: 2026-05-04 02:40:18
+=====================================================
+[2026-05-04 02:40:18] [INFO ] File Organizer Tool started.
+[2026-05-04 02:40:18] [INFO ] Undo history loaded. 1 session(s) available.

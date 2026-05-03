@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Organizer Web</title>
+    <style>
+        :root {
+            /* Lite Theme (Red & White) */
+            --bg-color: #ffffff;
+            --text-color: #aa0000;
+            --primary-color: #dd0000;
+            --secondary-color: #ffcccc;
+            --card-bg: #fff5f5;
+            --border-color: #ff9999;
+            --shadow: 0 4px 6px rgba(221, 0, 0, 0.1);
+            --header-bg: #dd0000;
+            --header-text: #ffffff;
+            --btn-hover: #bb0000;
+            --btn-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme (Black & Red) - Premium Refined */
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --primary-color: #ff0000;
+            --secondary-color: #1a1a1a;
+            --card-bg: #0f0f0f;
+            --border-color: #440000;
+            --shadow: 0 8px 32px rgba(255, 0, 0, 0.15);
+            --header-bg: #000000;
+            --header-text: #ff3333;
+            --btn-hover: #cc0000;
+            --btn-text: #ffffff;
+            --accent-glow: 0 0 15px rgba(255, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 50% 50%, rgba(40, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        [data-theme="dark"] .upload-card {
+            border: 1px solid #330000;
+            box-shadow: var(--shadow), inset 0 0 20px rgba(255, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .upload-btn {
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .file-label {
+            border-color: #660000;
+            color: #ff9999;
+        }
+
+        [data-theme="dark"] #status-message {
+            color: #ff5555;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .theme-switch {
+            background-color: transparent;
+            border: 2px solid var(--header-text);
+            color: var(--header-text);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        
+        .theme-switch:hover {
+            background-color: var(--header-text);
+            color: var(--header-bg);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .upload-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .upload-btn {
+            background-color: var(--primary-color);
+            color: var(--btn-text);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .upload-btn:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .upload-btn:active {
+            transform: translateY(0);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .file-label:hover {
+            background-color: var(--primary-color);
+            color: var(--btn-text);
+        }
+
+        #file-name {
+            margin-top: 1rem;
+            font-style: italic;
+            font-size: 0.9rem;
+            min-height: 1.2em;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            font-weight: bold;
+            min-height: 1.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>File Organizer</h1>
+        <button class="theme-switch" id="theme-toggle">Switch Theme</button>
+    </header>
+
+    <main>
+        <div class="upload-card">
+            <div class="upload-icon">📁</div>
+            <h2>Organize Your ZIP</h2>
+            <p>Upload a ZIP file, and we will return it completely organized by file types!</p>
+            
+            <form id="upload-form" enctype="multipart/form-data">
+                <label for="zip-file" class="file-label" id="drop-zone">
+                    Choose a ZIP file or drag it here
+                </label>
+                <input type="file" id="zip-file" name="file" accept=".zip" required>
+                
+                <div id="file-name">No file selected</div>
+                
+                <button type="submit" class="upload-btn" id="submit-btn" disabled>Organize It!</button>
+            </form>
+
+            <div class="loading" id="loading-indicator">Organizing... Please wait.</div>
+            <div class="status-message" id="status-message"></div>
+        </div>
+    </main>
+
+    <script>
+        // Theme toggling
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Check local storage for theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'lite');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // File input handling
+        const fileInput = document.getElementById('zip-file');
+        const fileNameDisplay = document.getElementById('file-name');
+        const submitBtn = document.getElementById('submit-btn');
+        const dropZone = document.getElementById('drop-zone');
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileNameDisplay.textContent = "Selected: " + e.target.files[0].name;
+                submitBtn.disabled = false;
+            } else {
+                fileNameDisplay.textContent = "No file selected";
+                submitBtn.disabled = true;
+            }
+        });
+
+        // Drag and drop support
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.style.backgroundColor = 'var(--primary-color)';
+            dropZone.style.color = 'var(--btn-text)';
+        }
+
+        function unhighlight(e) {
+            dropZone.style.backgroundColor = '';
+            dropZone.style.color = '';
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+
+            if (files.length > 0 && files[0].name.endsWith('.zip')) {
+                fileInput.files = files;
+                fileNameDisplay.textContent = "Selected: " + files[0].name;
+                submitBtn.disabled = false;
+            } else {
+                alert("Please drop a valid .zip file.");
+            }
+        }
+
+        // Form submission
+        const form = document.getElementById('upload-form');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const statusMessage = document.getElementById('status-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            submitBtn.style.display = 'none';
+            loadingIndicator.style.display = 'block';
+            statusMessage.textContent = '';
+
+            try {
+                const response = await fetch('/api/organize', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/zip'
+                    },
+                    body: file
+                });
+
+                if (response.ok) {
+                    // It returns a file blob
+                    const blob = await response.blob();
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = downloadUrl;
+                    
+                    // Generate new name based on original
+                    const newName = file.name.replace('.zip', '_organized.zip');
+                    a.download = newName;
+                    
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(downloadUrl);
+                    
+                    statusMessage.textContent = 'Successfully organized! Downloading...';
+                    statusMessage.style.color = 'var(--primary-color)';
+                } else {
+                    const text = await response.text();
+                    statusMessage.textContent = 'Error: ' + text;
+                }
+            } catch (error) {
+                statusMessage.textContent = 'Network Error occurred.';
+            } finally {
+                submitBtn.style.display = 'inline-block';
+                loadingIndicator.style.display = 'none';
+                form.reset();
+                fileNameDisplay.textContent = "No file selected";
+                submitBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
